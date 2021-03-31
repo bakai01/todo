@@ -1,0 +1,38 @@
+.list {
+    margin-bottom: 38px;
+
+    li {
+        display: flex;
+        padding: 13px 12px;
+        margin-bottom: 5px;
+        cursor: pointer;
+        align-items: center;
+
+        i {
+            margin-right: 10px;
+        }
+
+        .badge {
+            display: block;
+            width: 10px;
+            height: 10px;
+            border-radius: 30px;
+
+            &__green {
+                background-color: #42B883;
+            }
+            &__blue {
+                background-color: #64C4ED;
+            }
+            &__pink {
+                background-color: #FFBBCC;
+            }
+        }
+    }
+
+    li.active {
+        background: #FFFFFF;
+        box-shadow: 0px 2px 10px rgba(0, 0, 3, 0.05);
+        border-radius: 5px;
+    }
+}
