@@ -8,10 +8,6 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
-body {
-    background-color: rgb(0, 0, 0);
-}
-
 .app {
     position: absolute;
     left: 50%;
@@ -22,11 +18,10 @@ body {
     box-shadow: 1px 2px 20px #f3f3f3;
     border-radius: 15px;
     border: 1px solid #f1f1f1;
-    background-color: #FFFFFF;
 
     &__sidebar {
         width: 210px;
-        height: 100%;
+        height: calc(100% - 120px);
         background-color: #f4f6f8;
         border-right: 3px solid #f1f1f1;
         border-top-left-radius: 15px;

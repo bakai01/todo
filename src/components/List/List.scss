@@ -1,6 +1,16 @@
 .list {
     margin-bottom: 38px;
 
+    &__add-button {
+        opacity: 0.4;
+        
+
+        &:hover {
+            opacity: 1;
+            transition: .2s;
+        }
+    }
+
     li {
         display: flex;
         padding: 13px 12px;
