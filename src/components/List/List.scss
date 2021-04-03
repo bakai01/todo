@@ -1,16 +1,6 @@
 .list {
     margin-bottom: 38px;
 
-    &__add-button {
-        opacity: 0.4;
-        
-
-        &:hover {
-            opacity: 1;
-            transition: .2s;
-        }
-    }
-
     li {
         display: flex;
         padding: 13px 12px;
@@ -22,22 +12,10 @@
             margin-right: 10px;
         }
 
-        .badge {
-            display: block;
-            width: 10px;
-            height: 10px;
-            border-radius: 30px;
-
-            &__green {
-                background-color: #42B883;
-            }
-            &__blue {
-                background-color: #64C4ED;
-            }
-            &__pink {
-                background-color: #FFBBCC;
-            }
+        span {
+            user-select: none;
         }
+
     }
 
     li.active {
