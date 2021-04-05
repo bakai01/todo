@@ -1,4 +1,6 @@
 .list {
+    $self: &;
+
     margin-bottom: 38px;
 
     &:nth-child(2) {
@@ -25,6 +27,22 @@
 
         i {
             margin-right: 10px;
+        }
+
+        &:hover #{$self}__remove-icon {
+            opacity: 0.3;
+        }
+
+        #{$self}__remove-icon {
+            opacity: 0;
+
+            &:hover {
+                opacity: 0.7;
+            }
+        }
+
+        span {
+            flex: 1;
         }
     }
 

@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import List from "./components/List";
 import AddList from "./components/AddList"
+
 import DB from "./assets/db.json"
 
 const App = () => {
-
     const [lists, setLists] = useState(
         DB.lists.map(item => {
             item.color = DB.colors.filter(
@@ -14,6 +14,15 @@ const App = () => {
             return item;
         })
     );
+
+    const onAddList = (obj) => {
+        const newList = [...lists, obj];
+        setLists(newList);
+    };
+
+    const onRemove = (item) => {
+        console.log(item);
+    };
 
     return (
         <div className="app">
@@ -37,9 +46,10 @@ const App = () => {
                         active: true
                     }
                 ]} />
-                <List items={lists} />
 
-                <AddList colors={DB.colors} isRemovable />
+                <List onRemove={onRemove} items={lists} isRemovable />
+
+                <AddList onAddList={onAddList} colors={DB.colors} />
             </div>
 
             <div className="app__tasks"></div>
