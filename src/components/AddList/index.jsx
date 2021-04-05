@@ -1,6 +1,8 @@
 import React, { useState } from "react";
-import List from "../List"
-import Badge from "../Badge"
+import List from "../List";
+import Badge from "../Badge";
+
+import closeSvg from "../../assets/img/close.svg";
 
 import "./AddList.scss";
 
@@ -24,6 +26,8 @@ const AddButtonList = ({ colors }) => {
             ]} />
 
             {visiblePopup && <div className="add-list__popup">
+                <img onClick={() => setVisiblePopup(false)}
+                 src={closeSvg} alt="close button" className="add-list__popup-close-btn"/>
                 <input className="field" type="text" placeholder="Название списка" />
                 <div className="add-list__popup-colors">
                     {
@@ -31,7 +35,7 @@ const AddButtonList = ({ colors }) => {
                             key={item.id}
                             color={item.name}
                             onClick={() => setColor(item.id)}
-                            className={selectedColor === item.id && "active"}
+                            isActive={selectedColor === item.id && "active"}
                         />)
                     }
                 </div>

@@ -1,9 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import List from "./components/List";
 import AddList from "./components/AddList"
 import DB from "./assets/db.json"
 
 const App = () => {
+
+    const [lists, setLists] = useState(
+        DB.lists.map(item => {
+            item.color = DB.colors.filter(
+                color => color.id === item.colorId
+            )[0].name;
+
+            return item;
+        })
+    );
+
     return (
         <div className="app">
             <div className="app__sidebar">
@@ -26,25 +37,9 @@ const App = () => {
                         active: true
                     }
                 ]} />
-                <List items={[
-                    {
-                        id: 1,
-                        color: "green",
-                        name: "Покупки"
-                    },
-                    {
-                        id: 2,
-                        color: "blue",
-                        name: "Фронтенд"
-                    },
-                    {
-                        id: 3,
-                        color: "pink",
-                        name: "Фильмы и сериалы"
-                    }
-                ]} />
-                
-                <AddList colors={DB.colors} />
+                <List items={lists} />
+
+                <AddList colors={DB.colors} isRemovable />
             </div>
 
             <div className="app__tasks"></div>

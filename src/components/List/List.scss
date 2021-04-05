@@ -1,6 +1,21 @@
 .list {
     margin-bottom: 38px;
 
+    &:nth-child(2) {
+        overflow-x: hidden;
+        overflow-y: auto;
+        max-height: calc(100% - 169px);
+    }
+
+    &:nth-child(2)::-webkit-scrollbar {
+        width: 5px;
+        background-color: #b2b2ce91;
+    }
+
+    &:nth-child(2)::-webkit-scrollbar-thumb {
+        background-color: #77859080;
+    }
+
     li {
         display: flex;
         padding: 13px 12px;
@@ -11,11 +26,12 @@
         i {
             margin-right: 10px;
         }
+    }
 
-        span {
-            user-select: none;
-        }
-
+    .element:hover {
+        transition: .3s;
+        border-radius: 8px;
+        background: rgba(255, 255, 255, .7);
     }
 
     li.active {
