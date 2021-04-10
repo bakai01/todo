@@ -1,0 +1,109 @@
+.tasks {
+    &__title {
+        font-family: Montserrat;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 32px;
+        line-height: 39px;
+        color: #64C4ED;
+        padding-bottom: 20px;
+        border-bottom: 2px solid #f2f2f2;
+
+        &:hover {
+            img {
+                opacity: .2;
+            }
+        }
+
+        img {
+            opacity: 0;
+            margin-left: 15px;
+            cursor: pointer;
+
+            &:hover {
+                opacity: .8;
+            }
+        }
+    }
+
+    &__items {
+        margin-top: 31px;
+
+        &-row {
+            display: flex;
+            align-items: center;
+
+            .checkbox {
+                margin-right: 15px;
+
+                input {
+                    display: none;
+                }
+
+                label {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 20px;
+                    height: 20px;
+                    cursor: pointer;
+                    border: 2px solid #E8E8E8;
+                    border-radius: 15px;
+                    transition: background-color 0.15s ease-in-out,
+                        border-color 0.15s ease-in-out;
+
+                    svg {
+                        transition: opacity 0.15s ease-in-out;
+
+                        path {
+                            stroke: #fff;
+                        }
+                    }
+
+                    &:hover {
+                        background-color: #F2F2F2;
+                        border-color: #F2F2F2;
+
+                        svg {
+                            transition: opacity 0.15s ease-in-out;
+
+                            path {
+                                stroke: #b2b2b2;
+                            }
+                        }
+                    }
+
+                    &:active {
+                        background-color: darken(#F2F2F2, 10%);
+                        border-color: darken(#F2F2F2, 10%);
+
+                        svg {
+                            opacity: 1;
+                        }
+                    }
+                }
+
+                input:checked+label {
+                    background-color: #4DD599;
+                    border-color: #4DD599;
+
+                    svg {
+                        opacity: 1;
+
+                        path {
+                            stroke: #fff;
+                        }
+                    }
+                }
+            }
+        }
+
+        input {
+            width: 100%;
+            font-family: Lato, 'Roboto', -apple-system, 'system-ui', sans-serif;
+            font-size: 16px;
+            line-height: 19px;
+            color: #000000;
+        }
+    }
+}

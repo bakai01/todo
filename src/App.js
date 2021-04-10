@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import List from "./components/List";
-import AddList from "./components/AddList"
+import AddList from "./components/AddList";
+import Tasks from "./components/Tasks";
 
 import DB from "./assets/db.json"
 
@@ -52,7 +53,9 @@ const App = () => {
                 <AddList onAddList={onAddList} colors={DB.colors} />
             </div>
 
-            <div className="app__tasks"></div>
+            <div className="app__tasks">
+                <Tasks />
+            </div>
         </div>
     );
 };

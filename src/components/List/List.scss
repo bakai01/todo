@@ -10,8 +10,9 @@
     }
 
     &:nth-child(2)::-webkit-scrollbar {
-        width: 5px;
+        width: 3px;
         background-color: #b2b2ce91;
+        transition: 0.3s ease-in-out;
     }
 
     &:nth-child(2)::-webkit-scrollbar-thumb {

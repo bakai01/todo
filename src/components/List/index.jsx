@@ -9,7 +9,7 @@ import "./List.scss";
 const List = ({ items, onClick, isRemovable, onRemove }) => {
     const RemoveList = item => {
         if (window.confirm("Are you sure you want to delete the list?")) {
-            onRemove(item)
+            onRemove(item);
         }
     };    
 
