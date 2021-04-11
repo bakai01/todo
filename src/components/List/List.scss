@@ -12,11 +12,14 @@
     &:nth-child(2)::-webkit-scrollbar {
         width: 3px;
         background-color: #b2b2ce91;
-        transition: 0.3s ease-in-out;
     }
 
     &:nth-child(2)::-webkit-scrollbar-thumb {
         background-color: #77859080;
+
+        &:hover {
+            background-color: darken(#77859080, 15%);
+        }
     }
 
     li {
@@ -36,6 +39,7 @@
 
         #{$self}__remove-icon {
             opacity: 0;
+            transition: opacity .3s;
 
             &:hover {
                 opacity: 0.7;

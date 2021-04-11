@@ -1,5 +1,7 @@
 import React from "react";
 import className from "classnames";
+import axios from "axios";
+
 import Badge from "../Badge";
 
 import removeSvg from "../../assets/img/remove.svg";
@@ -9,9 +11,13 @@ import "./List.scss";
 const List = ({ items, onClick, isRemovable, onRemove }) => {
     const RemoveList = item => {
         if (window.confirm("Are you sure you want to delete the list?")) {
-            onRemove(item);
+            axios
+                .delete("http://localhost:3001/lists/" + item.id)
+                .then(() => {
+                    onRemove(item.id);
+                });
         }
-    };    
+    };
 
     return (
         <ul onClick={onClick} className="list">
@@ -21,7 +27,7 @@ const List = ({ items, onClick, isRemovable, onRemove }) => {
                         { "element": item.element })}>
                         <i>{item.icon
                             ? item.icon
-                            : <Badge color={item.color} />
+                            : <Badge color={item.color.name} />
                         }</i>
                         <span>{item.name}</span>
 
