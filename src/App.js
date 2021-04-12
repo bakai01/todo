@@ -6,6 +6,7 @@ import { AddList, List, Tasks } from "./components";
 const App = () => {
     const [lists, setLists] = useState(null);
     const [colors, setcolors] = useState(null);
+    const [activeItem, setActiveItem] = useState(null);
 
     useEffect(() => {
         axios
@@ -25,9 +26,20 @@ const App = () => {
         setLists(newList);
     };
 
-    const onRemove = (id) => {
+    const onRemove = id => {
         const newList = lists.filter(item => item.id !== id);
         setLists(newList);
+    };
+
+    const onEditTitle = (id, title) => {
+        const newTitle = lists.map(item => {
+            if (item.id === id) {
+                item.name = title;
+            }
+            return item;
+        });
+
+        setLists(newTitle);
     };
 
     return (
@@ -49,13 +61,18 @@ const App = () => {
                             />
                         </svg>),
                         name: "Все задачи",
-                        active: true
+                        active: false
                     }
                 ]} />
 
                 {
                     lists
-                        ? (<List onRemove={onRemove} items={lists} isRemovable />)
+                        ? (<List
+                            onRemove={onRemove}
+                            items={lists}
+                            onClickItem={item => setActiveItem(item)}
+                            isRemovable
+                            activeItem={activeItem} />)
                         : "Loading..."
                 }
 
@@ -63,7 +80,7 @@ const App = () => {
             </div>
 
             <div className="app__tasks">
-                {lists && <Tasks list={lists[1]} />}
+                {lists && activeItem && <Tasks list={activeItem} onEditTitle={onEditTitle} />}
             </div>
         </div>
     );

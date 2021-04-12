@@ -8,7 +8,7 @@ import removeSvg from "../../assets/img/remove.svg";
 
 import "./List.scss";
 
-const List = ({ items, onClick, isRemovable, onRemove }) => {
+const List = ({ items, onClick, isRemovable, onRemove, onClickItem, activeItem }) => {
     const RemoveList = item => {
         if (window.confirm("Are you sure you want to delete the list?")) {
             axios
@@ -23,13 +23,19 @@ const List = ({ items, onClick, isRemovable, onRemove }) => {
         <ul onClick={onClick} className="list">
             {
                 items.map(item => (
-                    <li key={item.id} className={className(item.className, { "active": item.active },
-                        { "element": item.element })}>
+                    <li
+                        key={item.id}
+                        className={className(item.className, { "active": activeItem && activeItem.id === item.id },
+                            { "element": item.element })}
+                        onClick={onClickItem ? () => onClickItem(item) : null}>
                         <i>{item.icon
                             ? item.icon
                             : <Badge color={item.color.name} />
                         }</i>
-                        <span>{item.name}</span>
+                        <span>
+                            {item.name}
+                            {item.tasks && item.tasks.length > 0 && ` (${item.tasks.length})`}
+                        </span>
 
                         {isRemovable && <img
                             className="list__remove-icon"

@@ -28,6 +28,30 @@
 
     &__items {
         margin-top: 31px;
+        max-height: 260px;
+        overflow-x: hidden;
+        overflow-y: auto;
+
+        &::-webkit-scrollbar {
+            width: 5px;
+            background-color: #d7d7e6c2;
+        }
+    
+        &::-webkit-scrollbar-thumb {
+            background-color: #96aec080;
+    
+            &:hover {
+                background-color: darken(#96aec080, 15%);
+            }
+        }
+
+        h2 {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            font-family: Montserrat;
+            color: #C9D1D3;
+        }
 
         &-row {
             display: flex;
