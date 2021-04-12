@@ -6,9 +6,11 @@ import "./AddTaskForm.scss";
 
 const AddTaskForm = () => {
     const [visibleForm, setVisibleForm] = React.useState(false);
+    const [inputValue, setInputValue] = React.useState("");
 
     const toggleVisibleForm = () => {
         setVisibleForm(!visibleForm);
+        setInputValue("");
     };
 
     return (
@@ -24,9 +26,11 @@ const AddTaskForm = () => {
                     : (
                         <div className="tasks__form-block">
                             <input
+                                value={inputValue}
                                 className="field"
                                 type="text"
                                 placeholder="Текст задачи"
+                                onChange={event => setInputValue(event.target.value)}
                             />
                             <button className="button">Добавить задачу</button>
                             <button
