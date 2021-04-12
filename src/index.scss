@@ -61,11 +61,24 @@ body {
         color: #fff;
 
         &:hover {
-            background: darken(#4DD599, 6);
+            background: darken(#4DD599, 6%);
         }
 
         &:active {
-            background: darken(#4DD599, 10);
+            background: darken(#4DD599, 10%);
+        }
+
+        &-grey {
+            background: #dee9f0;
+            color: #444444;
+
+            &:hover {
+                background: darken(#e5ebee, 6%);
+            }
+    
+            &:active {
+                background: darken(#e5ebee, 11%);
+            }
         }
     }
 }
