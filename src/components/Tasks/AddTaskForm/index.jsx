@@ -1,16 +1,62 @@
 import React from "react";
+import axios from "axios";
 
 import addSvg from "../../../assets/img/add.svg";
 
 import "./AddTaskForm.scss";
 
-const AddTaskForm = () => {
+const AddTaskForm = ({ list, onAddTask }) => {
     const [visibleForm, setVisibleForm] = React.useState(false);
     const [inputValue, setInputValue] = React.useState("");
+    const [isLoading, setIsLoading] = React.useState(false);
 
     const toggleVisibleForm = () => {
         setVisibleForm(!visibleForm);
         setInputValue("");
+    };
+
+    const addTask = () => {
+        if (!inputValue) {
+            window.confirm("Input the value!!!");
+            return;
+        }
+
+        const newTask = {
+            listId: list.id,
+            text: inputValue,
+            completed: false
+        };
+        setIsLoading(true);
+        axios.post("http://localhost:3001/tasks", newTask)
+            .then(({ data }) => {
+                onAddTask(list.id, data);
+                toggleVisibleForm();
+            })
+            .catch(() => alert("Произошла ошибка при отправке данных"))
+            .finally(() => setIsLoading(false));
+        
+    };
+
+    const enterEvent = event => {
+        if (event.key === "Enter") {
+            if (!inputValue) {
+                window.confirm("Input the value!!!");
+                return;
+            }
+
+            const newTask = {
+                listId: list.id,
+                text: inputValue,
+                completed: false
+            };
+            axios.post("http://localhost:3001/tasks", newTask)
+            .then(({ data }) => {
+                onAddTask(list.id, data);
+                toggleVisibleForm();
+            })
+            .catch(() => alert("Произошла ошибка при отправке данных"))
+            .finally(() => setIsLoading(false));
+        }
     };
 
     return (
@@ -31,8 +77,14 @@ const AddTaskForm = () => {
                                 type="text"
                                 placeholder="Текст задачи"
                                 onChange={event => setInputValue(event.target.value)}
+                                onKeyDown={enterEvent}
                             />
-                            <button className="button">Добавить задачу</button>
+                            <button
+                                onClick={addTask}
+                                disabled={isLoading}
+                                className="button">
+                                {isLoading ? "Добавление..." : "Добавить"}
+                            </button>
                             <button
                                 onClick={toggleVisibleForm}
                                 className="button button-grey">

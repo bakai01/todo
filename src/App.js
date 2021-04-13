@@ -26,6 +26,16 @@ const App = () => {
         setLists(newList);
     };
 
+    const onAddTask = (listId, taskObj) => {
+        const newTask = lists.map(item => {
+            if (item.id === listId) {
+                item.tasks = [...item.tasks, taskObj];
+            }
+            return item;
+        });
+        setLists(newTask);
+    };
+
     const onRemove = id => {
         const newList = lists.filter(item => item.id !== id);
         setLists(newList);
@@ -80,7 +90,9 @@ const App = () => {
             </div>
 
             <div className="app__tasks">
-                {lists && activeItem && <Tasks list={activeItem} onEditTitle={onEditTitle} />}
+                {lists && activeItem && (
+                    <Tasks list={activeItem} onAddTask={onAddTask} onEditTitle={onEditTitle} />
+                )}
             </div>
         </div>
     );

@@ -7,7 +7,7 @@ import "./Tasks.scss";
 
 import AddTaskForm from "./AddTaskForm";
 
-const Tasks = ({ list, onEditTitle }) => {
+const Tasks = ({ list, onEditTitle, onAddTask }) => {
     const editTitle = () => {
         const newTitle = window.prompt("list title", list.name);
         if (newTitle) {
@@ -19,7 +19,7 @@ const Tasks = ({ list, onEditTitle }) => {
                 .catch(() => alert("Could not change the title of the list!"));
         }
     };
-
+    debugger;
     return (
         <div className="tasks">
             <h2 className="tasks__title">
@@ -59,7 +59,7 @@ const Tasks = ({ list, onEditTitle }) => {
                     })
                 }
             </div>
-            <AddTaskForm />
+            <AddTaskForm list={list} onAddTask={onAddTask} />
         </div>
     );
 };
