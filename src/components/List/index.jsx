@@ -29,8 +29,7 @@ const List = ({ items, onClick, isRemovable, onRemove, onClickItem, activeItem }
                             "active": item.active
                                 ? item.active
                                 : activeItem && activeItem.id === item.id
-                        },
-                            { "element": item.element })}
+                        })}
                         onClick={onClickItem ? () => onClickItem(item) : null}>
                         <i>{item.icon
                             ? item.icon

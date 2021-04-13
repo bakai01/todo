@@ -46,18 +46,18 @@
             }
         }
 
+        &:hover {
+            transition: .3s;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, .7);
+        }
+
         span {
             flex: 1;
             text-overflow: ellipsis;
             white-space: nowrap;
             overflow: hidden;
         }
-    }
-
-    .element:hover {
-        transition: .3s;
-        border-radius: 8px;
-        background: rgba(255, 255, 255, .7);
     }
 
     li.active {

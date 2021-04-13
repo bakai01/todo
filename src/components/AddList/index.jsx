@@ -35,12 +35,11 @@ const AddButtonList = ({ colors, onAddList }) => {
         axios
             .post("http://localhost:3001/lists", {
                 name: inputValue,
-                element: true,
                 colorId: selectedColor
             })
             .then(({ data }) => {
                 const color = colors.filter(color => color.id === selectedColor)[0].name;
-                const newList = { ...data, color: { name: color } };
+                const newList = { ...data, color: { name: color }, tasks: [] };
                 onAddList(newList);
                 closePopup();
             })
