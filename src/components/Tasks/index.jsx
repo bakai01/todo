@@ -19,7 +19,7 @@ const Tasks = ({ list, onEditTitle, onAddTask }) => {
                 .catch(() => alert("Could not change the title of the list!"));
         }
     };
-    debugger;
+
     return (
         <div className="tasks">
             <h2 className="tasks__title">

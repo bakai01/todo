@@ -71,7 +71,7 @@ const App = () => {
                             />
                         </svg>),
                         name: "Все задачи",
-                        active: false
+                        active: true
                     }
                 ]} />
 

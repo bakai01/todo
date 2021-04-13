@@ -25,7 +25,11 @@ const List = ({ items, onClick, isRemovable, onRemove, onClickItem, activeItem }
                 items.map(item => (
                     <li
                         key={item.id}
-                        className={className(item.className, { "active": activeItem && activeItem.id === item.id },
+                        className={className(item.className, {
+                            "active": item.active
+                                ? item.active
+                                : activeItem && activeItem.id === item.id
+                        },
                             { "element": item.element })}
                         onClick={onClickItem ? () => onClickItem(item) : null}>
                         <i>{item.icon
