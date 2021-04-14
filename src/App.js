@@ -86,7 +86,7 @@ const App = () => {
                                 />
                             </svg>),
                             name: "Все задачи",
-                            active: true
+                            active: location.pathname === "/"
                         }
                     ]} />
                 {
