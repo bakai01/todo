@@ -7,7 +7,7 @@ import "./Tasks.scss";
 
 import AddTaskForm from "./AddTaskForm";
 
-const Tasks = ({ list, onEditTitle, onAddTask }) => {
+const Tasks = ({ list, onEditTitle, onAddTask, withoutTitleEmpty }) => {
     const editTitle = () => {
         const newTitle = window.prompt("list title", list.name);
         if (newTitle) {
@@ -22,13 +22,13 @@ const Tasks = ({ list, onEditTitle, onAddTask }) => {
 
     return (
         <div className="tasks">
-            <h2 style={{color: list.color.hex}} className="tasks__title">
-                {list.name}
+            <div style={{color: list.color.hex}} className="tasks__title">
+                <h2>{list.name}</h2>
                 <img src={editSvg} alt="edit button" onClick={editTitle} />
-            </h2>
+            </div>
 
             <div className="tasks__items">
-                {!list.tasks.length && <h2>Задачи отсутствуют</h2>}
+                {!withoutTitleEmpty && !list.tasks.length && <h2>Задачи отсутствуют</h2>}
                 {
                     list.tasks.map(item => {
                         return (
