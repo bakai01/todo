@@ -22,7 +22,7 @@ const Tasks = ({ list, onEditTitle, onAddTask }) => {
 
     return (
         <div className="tasks">
-            <h2 className="tasks__title">
+            <h2 style={{color: list.color.hex}} className="tasks__title">
                 {list.name}
                 <img src={editSvg} alt="edit button" onClick={editTitle} />
             </h2>

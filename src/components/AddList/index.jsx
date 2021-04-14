@@ -106,7 +106,7 @@ const AddButtonList = ({ colors, onAddList }) => {
                     placeholder="Название списка"
                     onKeyDown={enterAddList}
                 />
-                <div className="add-list__popup-colors">
+                <div onKeyDown={enterAddList} className="add-list__popup-colors">
                     {
                         colors.map(item => <Badge
                             key={item.id}
