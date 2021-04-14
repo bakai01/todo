@@ -38,8 +38,8 @@ const AddButtonList = ({ colors, onAddList }) => {
                 colorId: selectedColor
             })
             .then(({ data }) => {
-                const color = colors.filter(color => color.id === selectedColor)[0].name;
-                const newList = { ...data, color: { name: color }, tasks: [] };
+                const color = colors.find(color => color.id === selectedColor);
+                const newList = { ...data, color: { name: color.name, hex: color.hex }, tasks: [] };
                 onAddList(newList);
                 closePopup();
             })
@@ -62,8 +62,8 @@ const AddButtonList = ({ colors, onAddList }) => {
                 colorId: selectedColor
             })
             .then(({ data }) => {
-                const color = colors.filter(color => color.id === selectedColor)[0].name;
-                const newList = { ...data, color: { name: color }, tasks: [] };
+                const color = colors.find(color => color.id === selectedColor);
+                const newList = { ...data, color: { name: color.name, hex: color.hex }, tasks: [] };
                 onAddList(newList);
                 closePopup();
             })

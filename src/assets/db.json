@@ -11,14 +11,9 @@
       "id": 3
     },
     {
-      "name": "wqewwwwwwwwwww",
-      "colorId": 8,
+      "name": "new list",
+      "colorId": 7,
       "id": 4
-    },
-    {
-      "name": "er",
-      "colorId": 3,
-      "id": 5
     }
   ],
   "tasks": [
@@ -53,10 +48,16 @@
       "id": 7
     },
     {
-      "listId": 5,
-      "text": "lorem ipsum",
+      "listId": 4,
+      "text": "new task",
       "completed": false,
       "id": 8
+    },
+    {
+      "listId": 4,
+      "text": "eqwss",
+      "completed": false,
+      "id": 9
     }
   ],
   "colors": [
