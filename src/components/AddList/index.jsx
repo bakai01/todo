@@ -43,9 +43,35 @@ const AddButtonList = ({ colors, onAddList }) => {
                 onAddList(newList);
                 closePopup();
             })
+            .catch(() => alert("Произошла ошибка при добавлении списка!!!"))
             .finally(() => {
                 setIsLoading(false);
             });
+    };
+
+    const enterAddList = event => {
+        if (event.key === "Enter") {
+            if (!inputValue) {
+                alert("Input the value!");
+                return;
+            }
+            setIsLoading(true);
+        axios
+            .post("http://localhost:3001/lists", {
+                name: inputValue,
+                colorId: selectedColor
+            })
+            .then(({ data }) => {
+                const color = colors.filter(color => color.id === selectedColor)[0].name;
+                const newList = { ...data, color: { name: color }, tasks: [] };
+                onAddList(newList);
+                closePopup();
+            })
+            .catch(() => alert("Произошла ошибка при добавлении списка!!!"))
+            .finally(() => {
+                setIsLoading(false);
+            });
+        }
     };
 
     return (
@@ -78,6 +104,7 @@ const AddButtonList = ({ colors, onAddList }) => {
                     className="field"
                     type="text"
                     placeholder="Название списка"
+                    onKeyDown={enterAddList}
                 />
                 <div className="add-list__popup-colors">
                     {
