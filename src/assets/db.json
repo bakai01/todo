@@ -42,12 +42,6 @@
       "id": 6
     },
     {
-      "listId": 3,
-      "text": "all eyes on me",
-      "completed": false,
-      "id": 7
-    },
-    {
       "listId": 4,
       "text": "new task",
       "completed": false,
@@ -58,6 +52,12 @@
       "text": "eqwss",
       "completed": false,
       "id": 9
+    },
+    {
+      "listId": 4,
+      "text": "wqesad asd ",
+      "completed": false,
+      "id": 10
     }
   ],
   "colors": [

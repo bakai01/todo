@@ -45,6 +45,27 @@ const App = () => {
             return item;
         });
         setLists(newTask);
+    };    
+
+    const onRemoveTask = (listId, taskId) => {
+        if (window.confirm("Are you sure you want to delete the task?")) {
+            axios
+                .delete("http://localhost:3001/tasks/" + taskId)
+                .then(() => {
+                    const newList = lists.map(item => {
+                        if (item.id === listId) {
+                            item.tasks = item.tasks.filter(task => task.id !== taskId);
+                        }
+
+                        return item;
+                    });
+
+                    setLists(newList);
+                })
+                .catch(() => { 
+                    alert("Что-то пошло не так");
+                });
+        }
     };
 
     const onRemove = id => {
@@ -112,6 +133,7 @@ const App = () => {
                             list={list}
                             onAddTask={onAddTask}
                             onEditTitle={onEditTitle}
+                            onRemoveTask={onRemoveTask}
                             withoutTitleEmpty
                         />)
                     }
@@ -122,6 +144,7 @@ const App = () => {
                             list={activeItem}
                             onAddTask={onAddTask}
                             onEditTitle={onEditTitle}
+                            onRemoveTask={onRemoveTask}
                         />
                     )}
                 </Route>
