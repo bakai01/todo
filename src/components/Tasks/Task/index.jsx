@@ -3,8 +3,11 @@ import React from "react";
 import "./Task.scss";
 
 const Task = ({ id, text, onRemove, onEdit, list }) => {
-    const onEditText = event => {
-        
+    const onEditText = () => {
+        const task = window.prompt("Task", text);
+        if (!task) {
+            onEdit(text);
+        }
     };
 
     return (

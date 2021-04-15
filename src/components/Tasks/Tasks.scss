@@ -16,6 +16,10 @@
         align-items: center;
         justify-content: space-between;
 
+        a {
+            text-decoration: none;
+        }
+
         h2 {
             overflow: hidden;
             white-space: nowrap;
