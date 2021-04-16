@@ -4,9 +4,9 @@ import "./Task.scss";
 
 const Task = ({ id, text, onRemove, onEdit, list }) => {
     const onEditText = () => {
-        const task = window.prompt("Task", text);
-        if (!task) {
-            onEdit(text);
+        const newTask = window.prompt("Task", text);
+        if (newTask) {
+            onEdit(list.id, id, newTask);
         }
     };
 

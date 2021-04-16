@@ -68,6 +68,29 @@ const App = () => {
         }
     };
 
+    const onEditTask = (listId, taskId, text) => {
+        axios
+            .patch("http://localhost:3001/tasks/" + taskId, {
+                text: text
+            })
+            .then(() => {
+                const newList = lists.map(list => {
+                    if (list.id === listId) {
+                        list.tasks = list.tasks.map(task => {
+                            if (task.id === taskId) {
+                                task.text = text;
+                            }
+                            return task;
+                        })
+                    }
+                    return list;
+                });
+
+                setLists(newList);
+            })
+            .catch(() => alert("Не удалось изменить задачу..."));
+    };
+
     const onRemove = id => {
         const newList = lists.filter(item => item.id !== id);
         setLists(newList);
@@ -134,6 +157,7 @@ const App = () => {
                             onAddTask={onAddTask}
                             onEditTitle={onEditTitle}
                             onRemoveTask={onRemoveTask}
+                            onEditTask={onEditTask}
                             withoutTitleEmpty
                         />)
                     }
@@ -144,6 +168,7 @@ const App = () => {
                             list={activeItem}
                             onAddTask={onAddTask}
                             onEditTitle={onEditTitle}
+                            onEditTask={onEditTask}
                             onRemoveTask={onRemoveTask}
                         />
                     )}

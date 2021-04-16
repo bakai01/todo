@@ -9,7 +9,7 @@ import "./Tasks.scss";
 import AddTaskForm from "./AddTaskForm";
 import Task from "./Task";
 
-const Tasks = ({ list, onEditTitle, onAddTask, withoutTitleEmpty, onRemoveTask }) => {
+const Tasks = ({ list, onEditTitle, onAddTask, withoutTitleEmpty, onRemoveTask, onEditTask }) => {
     const editTitle = () => {
         const newTitle = window.prompt("list title", list.name);
         if (newTitle) {
@@ -30,7 +30,7 @@ const Tasks = ({ list, onEditTitle, onAddTask, withoutTitleEmpty, onRemoveTask }
                 </Link>
                 <img src={editSvg} alt="edit button" onClick={editTitle} />
             </div>
-
+        
             <div className="tasks__items">
                 {!withoutTitleEmpty && !list.tasks.length && <h2>Задачи отсутствуют</h2>}
                 {
@@ -40,6 +40,7 @@ const Tasks = ({ list, onEditTitle, onAddTask, withoutTitleEmpty, onRemoveTask }
                                 list={list}
                                 key={item.id}
                                 onRemove={onRemoveTask}
+                                onEdit={onEditTask}
                                 {...item}
                             />
                         );
