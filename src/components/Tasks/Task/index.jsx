@@ -2,7 +2,7 @@ import React from "react";
 
 import "./Task.scss";
 
-const Task = ({ id, text, onRemove, onEdit, list }) => {
+const Task = ({ id, text, onRemove, onEdit, list, completed, onComplete }) => {
     const onEditText = () => {
         const newTask = window.prompt("Task", text);
         if (newTask) {
@@ -10,10 +10,14 @@ const Task = ({ id, text, onRemove, onEdit, list }) => {
         }
     };
 
+    const onChangeCheckbox = e => {
+        onComplete(list.id, id, e.target.checked);
+    };
+
     return (
         <div key={id} className="tasks__items-row">
             <div className="checkbox">
-                <input id={`task-${id}`} type="checkbox" />
+                <input id={`task-${id}`} type="checkbox" checked={completed} onChange={onChangeCheckbox} />
                 <label htmlFor={`task-${id}`}>
                     <svg
                         width="13"

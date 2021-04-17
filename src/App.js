@@ -107,6 +107,27 @@ const App = () => {
         setLists(newTitle);
     };
 
+    const onCompleteTask = (listId, taskId, complete) => {
+        const newList = lists.map(list => {
+            if (list.id === listId) {
+                list.tasks = list.tasks.map(task => {
+                    if (task.id === taskId) {
+                        task.completed = complete;
+                    }
+                    return task;
+                });
+            }
+            return list;
+        });
+        setLists(newList);
+
+        axios.patch("http://localhost:3001/tasks/" + taskId, {
+            completed: complete
+        }).catch(() => {
+            alert("It`s error");
+        })
+    };
+
     return (
         <div className="app">
             <div className="app__sidebar">
@@ -158,6 +179,7 @@ const App = () => {
                             onEditTitle={onEditTitle}
                             onRemoveTask={onRemoveTask}
                             onEditTask={onEditTask}
+                            onCompleteTask={onCompleteTask}
                             withoutTitleEmpty
                         />)
                     }
@@ -170,6 +192,7 @@ const App = () => {
                             onEditTitle={onEditTitle}
                             onEditTask={onEditTask}
                             onRemoveTask={onRemoveTask}
+                            onCompleteTask={onCompleteTask}
                         />
                     )}
                 </Route>

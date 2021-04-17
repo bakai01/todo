@@ -9,7 +9,7 @@ import "./Tasks.scss";
 import AddTaskForm from "./AddTaskForm";
 import Task from "./Task";
 
-const Tasks = ({ list, onEditTitle, onAddTask, withoutTitleEmpty, onRemoveTask, onEditTask }) => {
+const Tasks = ({ list, onEditTitle, onAddTask, withoutTitleEmpty, onRemoveTask, onEditTask, completed, onCompleteTask }) => {
     const editTitle = () => {
         const newTitle = window.prompt("list title", list.name);
         if (newTitle) {
@@ -41,6 +41,7 @@ const Tasks = ({ list, onEditTitle, onAddTask, withoutTitleEmpty, onRemoveTask, 
                                 key={item.id}
                                 onRemove={onRemoveTask}
                                 onEdit={onEditTask}
+                                onComplete={onCompleteTask}
                                 {...item}
                             />
                         );

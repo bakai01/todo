@@ -4,6 +4,12 @@
     transition: opacity 0.15s ease-in-out;
     margin-left: auto;
 
+    &:hover {
+        div {
+            opacity: 0.4;
+        }
+    }
+
     div {
         display: flex;
         align-items: center;
@@ -14,6 +20,7 @@
         border-radius: 6px;
         margin-left: 5px;
         cursor: pointer;
+        opacity: 0;
 
         &:hover {
             background-color: darken(#f4f6f8, 2%);
